@@ -1,0 +1,179 @@
+#tituloIndex{
+    text-align: center;
+    top: 0;
+}
+
+#tituloIndex h1{
+    margin: 0;
+    font-size: 38px;
+}
+
+#fondoTrasparente{
+    position: fixed;
+    width: 100vw;
+    height: 100vh ;
+    background-color: rgba(255, 255, 255, 0.3);
+    z-index: -1;
+}
+
+#imgIndex{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+#imgIndex img{
+    width: 25%;
+    height: auto;
+}
+
+#botonesIndex{
+    display: flex;
+    justify-content: center;
+    gap: 15%;
+    margin-top: 30px;
+}
+
+#botonesIndex button{
+    width: 150px;
+    height: 50px;
+    font-size: 22px;
+    border: 2px solid #000;
+    border-radius: 10px;
+}
+
+/*--------------------- login ---------------------------------*/
+
+.tarjeta_login{
+  height: auto;
+  width: 35%;
+  margin: auto;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 60px rgba(24, 26, 91, 0.8);
+  text-align: center;
+}
+
+.tarjeta_login input{
+  padding: 5px;
+  margin: 10px;
+  border: 2px solid #000;
+  border-radius: 5px;
+}
+
+.tarjeta_login input[type="button"], .tarjeta_login input[type="submit"]{
+  width: 45%;
+  height: 45px;
+  font-size: 20px; 
+}
+
+
+/**--------------------- recuperar ---------------------------------*/
+
+.tarjeta_recuperar{
+
+  height: auto;
+  width: 35%;
+  margin: auto;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 60px rgba(24, 26, 91, 0.8);
+  text-align: center;
+}
+
+.tarjeta_recuperar input{
+  padding: 5px;
+  margin: 10px;
+  border: 2px solid #000;
+  border-radius: 5px;
+}
+
+.tarjeta_recuperar input[type="button"], .tarjeta_recuperar input[type="submit"]{
+  width: 45%;
+  height: 45px;
+  font-size: 20px; 
+}
+
+/*--------------------- registro ---------------------------------*/
+
+body{
+  margin: 0;
+  padding: 0;
+}
+
+.fondo{
+position: fixed;
+top: 0;
+left: 0;
+width: 100vw;
+height: 100vh ;
+object-fit: cover;
+z-index: -1;
+}
+.escudo{
+  text-align: center;
+}
+.escudo img{
+  width: 200px;
+  height: auto;
+  margin: 0;
+}
+
+.tarjeta_registro{
+  height: auto;
+  width: 30%;
+  margin: auto;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 60px rgba(24, 26, 91, 0.8);
+  text-align: center;
+}
+
+.tarjeta_registro input, select{
+  padding: 5px;
+  margin: 10px;
+  border: 2px solid #000;
+  border-radius: 5px;
+}
+
+.tarjeta_registro input[type="button"], .tarjeta_registro input[type="submit"],select{
+  width: 100px;
+  height: 45px;
+  font-size: 20px;
+}
+
+.campo{
+  margin-right: 3%;
+}
+
+.campo p{
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  font-size: 18px;
+  width: 30%;
+  align-items:end;
+}
+
+.campo input{
+  width: 55%;
+  font-size: 19px;
+}
+
+
+.exito {
+  display: flex;              /* activa flexbox */
+  justify-content: center;    /* centra horizontalmente */
+  align-items: center;        /* centra verticalmente *//* dale altura para que se note */
+  margin: 0;
+  padding: 0;
+}
+
+.exito p {
+  margin: 0;
+  padding: 0;
+}
