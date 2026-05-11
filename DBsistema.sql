@@ -9,6 +9,13 @@ create table roles (
   descripcion varchar(100)
 );
 
+create table codigo_recperacion(
+cod_ID int primary key auto_increment,
+cod_codigo int,
+cod_expira datetime,
+cod_uso int
+);
+
 insert into roles values(0,"Administrador"),(1,"Docente");
 
 create table users(

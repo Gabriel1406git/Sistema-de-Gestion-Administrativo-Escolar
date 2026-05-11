@@ -46,6 +46,38 @@ function inicio_sesion($dni,$contraseña){
     }
 }
 
+function recuperar($email){
+    $conexion = conexion();
 
- 
+    $sql = "select * from users where user_email='$email' ";
+    $registro = mysqli_query($conexion,$sql);
+
+    if(mysqli_num_rows($registro)>0){
+
+        $codigo = rand(100000,999999);
+
+        $asunto = "Recuperacion de contraseña";
+        $mensaje = "Tu codigo de recuperacion es: $codigo";
+        $headers = "norespondersga@mail.com";
+        $headers .= "Reply-To: norespondersga@mail.com\r\n";
+        $headers .= "X-Mailer: PHP/" . phpversion();
+        if(mail($email,$asunto,$mensaje,$headers)){
+            $mensaje = "Codigo enviado correctamnete.";
+        
+        }
+        else{
+            $mensaje = "Error al enviar el codigo.";
+           
+        }
+        
+    } else {
+        $mensaje= "Correo no encontrado";
+    }
+    return $mensaje;
+
+}
+
+
+
+
 ?>
