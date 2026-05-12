@@ -81,3 +81,15 @@ create table notas (
 
 
 select * from users;
+
+
+create table docente_materia (
+    dm_ID int auto_increment primary key,
+    user_FK int,
+    mat_FK int,
+
+    foreign key (user_FK) references users(user_ID),
+    foreign key (mat_FK) references materias(mat_ID)
+);
+
+
