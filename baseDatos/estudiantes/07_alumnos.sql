@@ -1,0 +1,12 @@
+create table alumnos(id int auto_increment primary key,
+legajo varchar(30) not null unique,
+nombre varchar(50) not null,
+apellido varchar(50) not null,
+dni varchar(20) not null unique,
+fecha_nacimiento date not null,
+telefono varchar(30) not null,
+email varchar(50),
+direccion varchar(60) not null,
+estado tinyint default 1,
+fecha_ingreso date,
+fecha_creacion timestamp default current_timestamp);
