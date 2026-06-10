@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style/style.css">
   <link rel="icon" type="image/x-icon" href="multimedia/Escudo.png">
-  <title>Document</title>
+  <title>Escuela 24</title>
 </head>
 <body>
 <div id="fondoTrasparente"> </div>

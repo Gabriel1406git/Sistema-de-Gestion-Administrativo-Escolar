@@ -93,3 +93,13 @@ create table docente_materia (
 );
 
 
+create table codigo_recuperacion (
+    cod_rec_ID int auto_increment primary key,
+    user_email varchar(100),
+    user_FK int,
+    cod_FK int,
+    expiracion datetime,
+    foreign key (user_FK) references users(user_ID),
+    foreign key (cod_FK) references codigo_recperacion(cod_ID)
+);
+

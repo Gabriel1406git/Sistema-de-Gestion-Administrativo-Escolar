@@ -12,8 +12,8 @@ function alta($nombre,$apellido,$email,$dni,$contraseña){
 
     // Ejecuto la consulta
     $resultado = mysqli_query($conexion, $SQL);
+
     // si la conexion me devolvio resultados significa que pudo cargar el producto
-    
     if(mysqli_affected_rows($conexion)>0){
        $mensaje = "El usuario se ha registrado correctamente";
     } 
@@ -59,27 +59,35 @@ function recuperar($email){
     $registro = mysqli_query($conexion,$sql);
 
     if(mysqli_num_rows($registro)>0){
-
         $codigo = rand(100000,999999);
+        // genero un codigo aleatorio de 6 digitos para enviar al correo del usuario
 
-        $asunto = "Recuperacion de contraseña";
-        $mensaje = "Tu codigo de recuperacion es: $codigo";
-        $headers = "norespondersga@mail.com";
-        $headers .= "Reply-To: norespondersga@mail.com\r\n";
-        $headers .= "X-Mailer: PHP/" . phpversion();
-        if(mail($email,$asunto,$mensaje,$headers)){
-            $mensaje = "Codigo enviado correctamnete.";
-        
+        $fila = mysqli_fetch_assoc($registro);
+        // obtengo el registro del usuario como un array asociativo clave => valor 
+
+        $user_id = $fila['user_ID'];
+        // obtengo el id del usuario para relacionarlo con el codigo de recuperacion
+
+        $sql = "insert into codigo_recuperacion (user_email,user_FK,codigo,fecha_creacion,fecha_expiracion) 
+        values ('$email', $user_id, $codigo, now(), date_add(now(), interval 15 minute))";
+        // inserto el codigo de recuperacion en la base de datos con una expiracion de 15 minutos
+
+        $resultado = mysqli_query($conexion,$sql);
+
+        // Enviar correo
+        $asunto = "Codigo de recuperación";
+        $mensaje = "Tu código de recuperación es: $codigo";
+        $headers = "From: no-reply@escuela24.com";
+
+        if (mail($email, $asunto, $mensaje, $headers)) {
+            return "Código enviado a tu correo.";
+        } else {
+            return "Error al enviar el correo.";
         }
-        else{
-            $mensaje = "Error al enviar el codigo.";
-           
-        }
-        
+
     } else {
-        $mensaje= "Correo no encontrado";
+        return "Correo no encontrado.";
     }
-    return $mensaje;
 
 }
 
