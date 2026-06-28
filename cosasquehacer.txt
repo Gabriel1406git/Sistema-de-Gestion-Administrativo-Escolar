@@ -1,0 +1,5 @@
+Buenass, pidió mejorar la validaciones al registrarse (que en los nombres no se ingresen números y que en el DNI no se ingresen letras)
+
+También que el recuperar contraseña funcione
+
+Y que la página de docente haga algo

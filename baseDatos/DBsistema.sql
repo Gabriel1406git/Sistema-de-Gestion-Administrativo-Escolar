@@ -1,8 +1,6 @@
 create database sistema;
 use sistema;
 
--- drop database if exists sistema;
-
 
 create table roles (
   rol_ID int(1) primary key,
@@ -80,9 +78,6 @@ create table notas (
 
 
 
-select * from users;
-
-
 create table docente_materia (
     dm_ID int auto_increment primary key,
     user_FK int,
@@ -103,3 +98,4 @@ create table codigo_recuperacion (
     foreign key (cod_FK) references codigo_recperacion(cod_ID)
 );
 
+select * from users;
