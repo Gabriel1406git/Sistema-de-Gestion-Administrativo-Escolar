@@ -9,6 +9,7 @@
   </head>
   <body>
     <img class="fondo" src="multimedia/Fondo.png" alt="" />
+    <div id="fondoTrasparente"> </div>
 
     <div class="escudo">
       <img src="multimedia/Escudo.png" alt="" />

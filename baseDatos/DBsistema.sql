@@ -7,21 +7,26 @@ create table roles (
   descripcion varchar(100)
 );
 
-create table codigo_recperacion(
+create table codigo_recuperacion(
 cod_ID int primary key auto_increment,
+user_FK int,
+user_email varchar(100),
 cod_codigo int,
-cod_expira datetime,
-cod_uso int
+cod_fecha_expiracion datetime,
+foreign key (user_FK) references users(user_ID)
 );
 
+select * from codigo_recuperacion;
+
 insert into roles values(0,"Administrador"),(1,"Docente");
+
 
 create table users(
 user_ID int auto_increment primary key,
 user_nom varchar(50),
 user_ape varchar(50),
 user_email varchar(100),
-user_DNI int,
+user_DNI int unique,
 user_contraseña varchar (256),
 rol_FK int,
 foreign key (rol_FK) references roles(rol_ID)
@@ -88,14 +93,5 @@ create table docente_materia (
 );
 
 
-create table codigo_recuperacion (
-    cod_rec_ID int auto_increment primary key,
-    user_email varchar(100),
-    user_FK int,
-    cod_FK int,
-    expiracion datetime,
-    foreign key (user_FK) references users(user_ID),
-    foreign key (cod_FK) references codigo_recperacion(cod_ID)
-);
 
 select * from users;

@@ -25,18 +25,19 @@ if (isset($_POST['registrar'])) {
   $email = $_POST['email'];
   $contraseña = $_POST['contraseña'];
   $repetir = $_POST['repetir'];
+
   /* verifico si el nombre o apellido contienen números */
+  /*
   if (preg_match('/[0-9]/', $nombre) || preg_match('/[0-9]/', $apellido) ) {
     $mensajeNombreApellido = "<p class='mensaje'>El nombre y apellido no pueden contener números.</p>";
   } 
-  
-  
+  */
   // Validar que las contraseñas coincidan
   if ($contraseña != $repetir) {
     $mensajeContraseña = "<p class='mensaje'>Las contraseñas no coinciden.</p>";
   } else {
     $exito = alta($nombre, $apellido, $email, $dni, $contraseña) ;
-    $mensajeresul = "class='mensaje'><p>$exito</p>";
+    $mensajeresul = "<p class='mensaje'>$exito</p>";
   
   }
 }
@@ -49,9 +50,11 @@ if (isset($_POST['registrar'])) {
   if (isset($mensajeresul)) {
     echo $mensajeresul;
   }
+  /*
   if (isset($mensajeNombreApellido)) {
     echo $mensajeNombreApellido;
   }
+  */
   if (isset($mensajeContraseña)) {
     echo $mensajeContraseña;
   }
