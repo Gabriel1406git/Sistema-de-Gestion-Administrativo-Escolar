@@ -1,33 +1,38 @@
 create database sistema;
 use sistema;
 
--- drop database if exists sistema;
-
 
 create table roles (
   rol_ID int(1) primary key,
   descripcion varchar(100)
 );
 
-create table codigo_recperacion(
+create table codigo_recuperacion(
 cod_ID int primary key auto_increment,
+user_FK int,
+user_email varchar(100),
 cod_codigo int,
-cod_expira datetime,
-cod_uso int
+cod_fecha_expiracion datetime,
+foreign key (user_FK) references users(user_ID)
 );
 
+select * from codigo_recuperacion;
+
 insert into roles values(0,"Administrador"),(1,"Docente");
+
 
 create table users(
 user_ID int auto_increment primary key,
 user_nom varchar(50),
 user_ape varchar(50),
 user_email varchar(100),
-user_DNI int,
+user_DNI int unique,
 user_contraseña varchar (256),
 rol_FK int,
 foreign key (rol_FK) references roles(rol_ID)
 );
+
+select * from users;
 
 create table cursos (
   curso_ID int auto_increment primary key,
@@ -80,9 +85,6 @@ create table notas (
 
 
 
-select * from users;
-
-
 create table docente_materia (
     dm_ID int auto_increment primary key,
     user_FK int,
@@ -91,5 +93,4 @@ create table docente_materia (
     foreign key (user_FK) references users(user_ID),
     foreign key (mat_FK) references materias(mat_ID)
 );
-
 

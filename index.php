@@ -5,10 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style/style.css" />
     <link rel="icon" type="image/x-icon" href="multimedia/Escudo.png" />
-    <title>Document</title>
+    <title>Escuela 24</title>
   </head>
   <body>
     <img class="fondo" src="multimedia/Fondo.png" alt="" />
+    <div id="fondoTrasparente"> </div>
 
     <div class="escudo">
       <img src="multimedia/Escudo.png" alt="" />
@@ -18,15 +19,14 @@
     require_once 'funciones/funciones.php';
 
 
-    if($_SERVER["REQUEST_METHOD"] == "POST"){
+    if(isset($_POST['ingresar'])){
         $dni = $_POST['dni'];
         $contraseña = $_POST['contraseña'];
   
         $direccion = inicio_sesion($dni, $contraseña);
 
         if ($direccion == false) {
-        
-            echo "<div class='exito'><h3>DNI o contraseña incorrectos.</h3></div>";
+          $mensajeError = "<h3>DNI O CONTRASEÑA INCORECTOS.</h3>";
         }
         else {
           // redirijo al usuario a la pagina correspondiente segun su rol
@@ -40,9 +40,14 @@
     ?>
 
     <div class="tarjeta_login">
+      <?php
+        if(isset($mensajeError)){
+          echo $mensajeError;
+        }
+        ?>
       <form action="#" method="post">
         <div class="campo">
-          <p>DNI:</p><input type="number" name="dni" max="99999999" min="10000000" required><br>
+          <p>DNI:</p><input type="number" name="dni" max="99999999" min="10000000" autofocus required><br>
         </div>
 
         <div class="campo">
@@ -51,7 +56,7 @@
 
         <div class="botones">
           <a href="recuperar.php"><input type="button" value="Olvide mi contraseña"></a>
-          <a href=""><input type="submit" value="Ingresar"></a>
+          <a href=""><input type="submit" name="ingresar" ></a>
         </div>
         
         <a href="registro.php"><input type="button" value="Registrar"></a>
