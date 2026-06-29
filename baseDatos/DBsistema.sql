@@ -32,6 +32,8 @@ rol_FK int,
 foreign key (rol_FK) references roles(rol_ID)
 );
 
+select * from users;
+
 create table cursos (
   curso_ID int auto_increment primary key,
   curso_nombre varchar(50) ,
@@ -92,6 +94,3 @@ create table docente_materia (
     foreign key (mat_FK) references materias(mat_ID)
 );
 
-
-
-select * from users;
