@@ -105,7 +105,7 @@ function recuperar($email){
             // Configuración de la cuenta de correo y contraseña de aplicación
             $mail->Username = 'escuelaisfdyt24@gmail.com';
             // Configuración de la contraseña de aplicación generada en Gmail
-            $mail->Password = 'contraseña_de_aplicacion'; // App Password
+            $mail->Password = 'iaeb clse zzjh fyyj'; // App Password
             // Habilitar encriptación TLS
             $mail->SMTPSecure = 'tls';
             // Puerto para TLS
@@ -115,11 +115,15 @@ function recuperar($email){
             // Destinatario
             $mail->addAddress($email);
             // Asunto y cuerpo del correo
-            $mail->Subject = 'Código de recuperación';
-            $mail->Body    = "Tu código de recuperación es: $codigo";
+            $mail->Subject = 'Codigo de recuperacion';
+            $mail->Body    = "Tu código de recuperacion es: $codigo";
 
             // Enviar el correo, send() devuelve true si se envió correctamente, de lo contrario lanza una excepción
             $mail->send();
+
+
+            //develvo e codigo para verificarlo
+            return $codigo;
             // catch devuelve el error si no se pudo enviar el correo
         } catch (Exception $e) { // Exception es la clase de PHPMailer que maneja los errores
             // ErrorInfo es un atributo que contiene el mensaje de error del PHPMailer
@@ -130,6 +134,33 @@ function recuperar($email){
         return "Correo no encontrado.";
     }
 
+}
+
+
+function buscarUsuarioPorEmail($email) {
+    $conexion = conexion();
+
+    $sql = "SELECT * FROM users WHERE user_email='$email'";
+    $resultado = mysqli_query($conexion, $sql);
+
+    if (mysqli_num_rows($resultado) > 0) {
+        return mysqli_fetch_assoc($resultado);
+    } else {
+        return false;
+    }
+}
+
+function cambiarContrasena($user_id, $nuevaContraseña) {
+    $conexion = conexion();
+
+    $sql = "UPDATE users SET user_contraseña='$nuevaContraseña' WHERE user_ID='$user_id'";
+    $resultado = mysqli_query($conexion, $sql);
+
+    if (mysqli_affected_rows($conexion) > 0) {
+        return true; // Contraseña actualizada correctamente
+    } else {
+        return false; // No se pudo actualizar la contraseña
+    }
 }
 
 

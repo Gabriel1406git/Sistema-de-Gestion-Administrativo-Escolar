@@ -55,7 +55,7 @@
         </div>
 
         <div class="botones">
-          <a href="recuperar.php"><input type="button" value="Olvide mi contraseña"></a>
+          <a href="enviarCodigoRecupera.php"><input type="button" value="Olvide mi contraseña"></a>
           <a href=""><input type="submit" name="ingresar" ></a>
         </div>
         
