@@ -21,11 +21,17 @@
   <div class="tarjeta_recuperar">
   <?php 
   require_once 'funciones/funciones.php';
+
+  session_start();
+
   if (isset($_POST['enviarCorreo'])){
-    $email = $_POST['email'];
-    $resultado = recuperar($email);
+    
+    $_SESSION['email'] = $_POST['email'];
+    $_SESSION['codigoGenerado'] = recuperar($_POST['email']);
   }
-  if (!isset($email)){
+
+
+  if (!isset($_POST['enviarCorreo']) && !isset($_POST['enviarCodigo'])) {
   ?>
     <h2>Escribe tu correo electrónico:</h2>
 
@@ -38,28 +44,49 @@
     </form>
   <?php 
   } 
-  else if ($resultado == "Error al enviar el correo." || $resultado == "Correo no encontrado.") {
-    echo "<p class='mensaje'>$resultado</p>";
+
+
+
+  /* si existe un código generado  el resultado es una cadena significa que el envio no funcino y devuelve un mensaje de error */
+  else if (isset($_SESSION['codigoGenerado']) && is_string($_SESSION['codigoGenerado'])) {
+    echo "<p class='mensaje'>{$_SESSION['codigoGenerado']}</p>";
     ?>
     <a href="index.php"><input type="button" value="Volver"></a> 
     <?php
   }
   
   else {
-    echo "<p class='mensaje'>$resultado</p>";
+    if(isset($_POST['enviarCodigo'])){
+      $codigoIngresado = $_POST['codigo'];
+      if($codigoIngresado == $_SESSION['codigoGenerado']){
+        header("Location: cambiarContraseña.php");
+        exit();
+      } else {
+        echo "<p class='mensaje'>Código incorrecto.</p>";
+      }
+
+    }
+    
   ?>
-  
+    
     <h2>Escribir el código enviado:</h2>
     <form action="#" method="post">
       <div class="campo">
-        <p>Contraseña:</p><input type="password" maxlength="256" minlength="8" required><br>
+        <p>Codigo:</p><input type="password" name="codigo" maxlength="6" minlength="6" required><br>
       </div>
 
       <a href="index.php"><input type="button" value="Volver"></a>
-      <input type="submit" value="Enviar">
+      <input type="submit" name="enviarCodigo" value="Enviar">
     </form>
+
+
+    <?php 
+    
+
+    ?>
   </div>
   <?php 
+    
   }
   ?>
 

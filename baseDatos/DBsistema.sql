@@ -32,6 +32,7 @@ rol_FK int,
 foreign key (rol_FK) references roles(rol_ID)
 );
 
+use sistema;
 select * from users;
 
 create table cursos (
