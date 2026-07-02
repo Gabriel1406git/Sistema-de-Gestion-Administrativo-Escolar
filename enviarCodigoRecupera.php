@@ -20,14 +20,14 @@
 
   <div class="tarjeta_recuperar">
   <?php 
-  require_once 'funciones/funciones.php';
+  require_once 'funciones/generarCodigo.funciones.php';
 
   session_start();
 
   if (isset($_POST['enviarCorreo'])){
     
     $_SESSION['email'] = $_POST['email'];
-    $_SESSION['codigoGenerado'] = recuperar($_POST['email']);
+    $_SESSION['codigoGenerado'] = generarCodigo($_POST['email']);
   }
 
 

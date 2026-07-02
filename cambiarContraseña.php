@@ -16,7 +16,8 @@
     <img src="multimedia/Escudo.png" alt="" />
   </div>
   <?php 
-  require_once 'funciones/funciones.php';
+  require_once 'funciones/cambiarContraseña.funciones.php';
+  require_once 'funciones/buscar.funciones.php';
   session_start();
 
   if ($usuario = buscarUsuarioPorEmail($_SESSION['email'])){
@@ -57,8 +58,8 @@
       ?>
       <h2>Cree una nueva contraseña:</h2>
         <form  method="post">
-              Contraseña: <input type="password" name="contrasena" autofocus ><br>
-              Confirmar contraseña: <input type="password" name="confirmarContrasena">
+              Contraseña: <input type="password" name="contrasena" maxlength="256" minlength="8" autofocus ><br>
+              Confirmar contraseña: <input type="password" name="confirmarContrasena" maxlength="256" minlength="8" >
               <input type="submit" value="cancelar" name="cancelar" formaction="index.php">
               <input type="submit" value="Guardar" name="guardarCambios">
         </form>
