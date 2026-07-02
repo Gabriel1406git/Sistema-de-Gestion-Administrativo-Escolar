@@ -17,7 +17,7 @@
 </div>
 
 <?php 
-require_once 'funciones/funciones.php';
+require_once 'funciones/alta.funciones.php';
 if (isset($_POST['registrar'])) {
   $nombre = $_POST['nombre'];
   $apellido = $_POST['apellido'];
@@ -32,6 +32,7 @@ if (isset($_POST['registrar'])) {
     $mensajeNombreApellido = "<p class='mensaje'>El nombre y apellido no pueden contener números.</p>";
   } 
   */
+
   // Validar que las contraseñas coincidan
   if ($contraseña != $repetir) {
     $mensajeContraseña = "<p class='mensaje'>Las contraseñas no coinciden.</p>";

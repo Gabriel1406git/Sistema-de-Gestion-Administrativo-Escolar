@@ -16,7 +16,7 @@
     </div>
 
     <?php
-    require_once 'funciones/funciones.php';
+    require_once 'funciones/inicio_sesion.funciones.php';
 
 
     if(isset($_POST['ingresar'])){
@@ -25,13 +25,13 @@
   
         $direccion = inicio_sesion($dni, $contraseña);
 
-        if ($direccion == false) {
-          $mensajeError = "<h3>DNI O CONTRASEÑA INCORECTOS.</h3>";
-        }
-        else {
+        if ($direccion ) {
           // redirijo al usuario a la pagina correspondiente segun su rol
             header("Location: $direccion");
             exit();
+        }
+        else {
+          $mensajeError = "<h3>DNI O CONTRASEÑA INCORECTOS.</h3>";
         }
 
         
